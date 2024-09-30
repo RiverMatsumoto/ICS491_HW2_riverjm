@@ -1,0 +1,14 @@
+D:\School\College\7_2024Fall\ICS491\ICS491_HW2_riverjm\bin\Debug\net8.0\ICS491_HW2_riverjm.exe
+D:\School\College\7_2024Fall\ICS491\ICS491_HW2_riverjm\bin\Debug\net8.0\ICS491_HW2_riverjm.deps.json
+D:\School\College\7_2024Fall\ICS491\ICS491_HW2_riverjm\bin\Debug\net8.0\ICS491_HW2_riverjm.runtimeconfig.json
+D:\School\College\7_2024Fall\ICS491\ICS491_HW2_riverjm\bin\Debug\net8.0\ICS491_HW2_riverjm.dll
+D:\School\College\7_2024Fall\ICS491\ICS491_HW2_riverjm\bin\Debug\net8.0\ICS491_HW2_riverjm.pdb
+D:\School\College\7_2024Fall\ICS491\ICS491_HW2_riverjm\obj\Debug\net8.0\ICS491_HW2_riverjm.GeneratedMSBuildEditorConfig.editorconfig
+D:\School\College\7_2024Fall\ICS491\ICS491_HW2_riverjm\obj\Debug\net8.0\ICS491_HW2_riverjm.AssemblyInfoInputs.cache
+D:\School\College\7_2024Fall\ICS491\ICS491_HW2_riverjm\obj\Debug\net8.0\ICS491_HW2_riverjm.AssemblyInfo.cs
+D:\School\College\7_2024Fall\ICS491\ICS491_HW2_riverjm\obj\Debug\net8.0\ICS491_HW2_riverjm.csproj.CoreCompileInputs.cache
+D:\School\College\7_2024Fall\ICS491\ICS491_HW2_riverjm\obj\Debug\net8.0\ICS491_HW2_riverjm.dll
+D:\School\College\7_2024Fall\ICS491\ICS491_HW2_riverjm\obj\Debug\net8.0\refint\ICS491_HW2_riverjm.dll
+D:\School\College\7_2024Fall\ICS491\ICS491_HW2_riverjm\obj\Debug\net8.0\ICS491_HW2_riverjm.pdb
+D:\School\College\7_2024Fall\ICS491\ICS491_HW2_riverjm\obj\Debug\net8.0\ICS491_HW2_riverjm.genruntimeconfig.cache
+D:\School\College\7_2024Fall\ICS491\ICS491_HW2_riverjm\obj\Debug\net8.0\ref\ICS491_HW2_riverjm.dll
