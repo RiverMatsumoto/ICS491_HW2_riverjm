@@ -8,24 +8,19 @@
     "net8.0": []
   },
   "packageFolders": {
-    "C:\\Users\\river\\.nuget\\packages\\": {},
-    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
+    "C:\\Users\\river\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\School\\College\\7_2024Fall\\ICS491\\ICS491_HW2_riverjm\\ICS491_HW2_riverjm.csproj",
+      "projectUniqueName": "C:\\Users\\river\\Documents\\School\\7_Fall2024\\ICS491\\ICS491_HW2_riverjm\\ICS491_HW2_riverjm.csproj",
       "projectName": "ICS491_HW2_riverjm",
-      "projectPath": "D:\\School\\College\\7_2024Fall\\ICS491\\ICS491_HW2_riverjm\\ICS491_HW2_riverjm.csproj",
+      "projectPath": "C:\\Users\\river\\Documents\\School\\7_Fall2024\\ICS491\\ICS491_HW2_riverjm\\ICS491_HW2_riverjm.csproj",
       "packagesPath": "C:\\Users\\river\\.nuget\\packages\\",
-      "outputPath": "D:\\School\\College\\7_2024Fall\\ICS491\\ICS491_HW2_riverjm\\obj\\",
+      "outputPath": "C:\\Users\\river\\Documents\\School\\7_Fall2024\\ICS491\\ICS491_HW2_riverjm\\obj\\",
       "projectStyle": "PackageReference",
-      "fallbackFolders": [
-        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-      ],
       "configFilePaths": [
         "C:\\Users\\river\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -33,7 +28,7 @@
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-        "C:\\Users\\river\\AppData\\Roaming\\Cosmos User Kit\\packages\\": {},
+        "C:\\Program Files\\dotnet\\library-packs": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
@@ -72,7 +67,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.206/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.402/PortableRuntimeIdentifierGraph.json"
       }
     }
   }
