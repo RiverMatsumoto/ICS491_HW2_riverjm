@@ -35,30 +35,6 @@ namespace ICS491_HW2_riverjm
             pixels_[row * Width + column] = color;
         }
 
-        public float4[] GetPixelsAsFloat4()
-        {
-            float4[] pixels = new float4[Width * Height];
-            for (int i = 0; i < Height; i++)
-            {
-                for (int j = 0; j < Width; j++)
-                {
-                    Pixel p = GetPixel(i, j);
-                    pixels[i * Width + j] = new float4(p.R / 255f, p.G / 255f, p.B / 255f, 1);
-                }
-            }
-            return pixels;
-        }
-
-        public static Image FromFloat4(float4[] pixels, int width, int height)
-        {
-            Pixel[] p = new Pixel[pixels.Length];
-            for (int i = 0; i < pixels.Length; i++)
-            {
-                p[i] = new Pixel((int)(pixels[i].X * 255), (int)(pixels[i].Y * 255), (int)(pixels[i].Z * 255));
-            }
-            return new Image(p, width, height);
-        }
-
         public static Image CreateGrayscaleCopy(Image img)
         {
             Image newImg = new Image(img.Width, img.Height);

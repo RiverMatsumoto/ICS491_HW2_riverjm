@@ -90,7 +90,7 @@ class Program
         Console.WriteLine("Importing images...");
         var ppm = new PpmParser();
         string[] ppmFiles = Directory.GetFiles(inputDirectory, "*.ppm");
-        int totalFiles = 40;
+        int totalFiles = ppmFiles.Length;
         Image[] images = new Image[totalFiles];
         Image[] tempImages = new Image[totalFiles];
         for (int i = 0; i < totalFiles; i++)
@@ -144,15 +144,6 @@ class Program
             img.ApplyThreshold(0.5);
         }
         
-        // Parallel.For(0, totalFiles, i =>
-        // {
-        //     if (tempImages[i] != null)
-        //     {
-        //         double[,] selectedKernel = kernelCache[i];
-        //         tempImages[i] = ApplyGaussianBlur(images[i], selectedKernel);
-        //         Console.WriteLine($"[Thread {Task.CurrentId}] Applied Gaussian blur to image {i + 1}/{totalFiles}");
-        //     }
-        // });
         for (int i = 0; i < tempImages.Length; i++)
         {
             tempImages[i] = ApplyGaussianBlur(images[i], kernelCache[i]);
@@ -178,14 +169,6 @@ class Program
             img.ApplyThreshold(0.5);
         }
         Console.WriteLine("Created threshold images.");
-        // Parallel.For(0, totalFiles, i =>
-        // {
-        //     if (tempImages[i] != null)
-        //     {
-        //         tempImages[i] = ApplyGaussianBlur(tempImages[i], kernel);
-        //         Console.WriteLine($"[Thread {Task.CurrentId}] Applied Gaussian blur to image {i + 1}/{totalFiles}");
-        //     }
-        // });
         for (int i = 0; i < tempImages.Length; i++)
         {
             tempImages[i] = ApplyGaussianBlur(tempImages[i], kernel);
@@ -202,7 +185,6 @@ class Program
         {
             PpmParser.SaveImageToPpmFile(Path.Combine(outputDirectory, $"frame_{(i + 240).ToString().PadLeft(4, '0')}.ppm"), tempImages[i], "P3");
         }
-
     }
 
     public static double Lerp(double a, double b, double t)
@@ -217,14 +199,15 @@ class Program
         int kernelSize = kernel.GetLength(0); // square kernel
         int radius = kernelSize / 2;
 
-        new Image(width, height);
+        // Create a new image to store the result
+        Image result = new Image(width, height);
 
-        // move center of kernel along the image
-        for (int i = 0; i < height; i++)
+        // Parallelize the outer loop over image rows
+        Parallel.For(0, height, i =>
         {
             for (int j = 0; j < width; j++)
             {
-                // apply the kernel weights to the pixel values
+                // Apply the kernel weights to the pixel values
                 double r = 0, g = 0, b = 0;
                 for (int k = -radius; k <= radius; k++)
                 {
@@ -233,19 +216,21 @@ class Program
                         int row = Clamp(i + k, 0, height - 1);
                         int col = Clamp(j + l, 0, width - 1);
                         Pixel c = img.GetPixel(row, col);
-                        // the kernel window into the image is used to weight the pixel values closer to the center
-                        // closer to the center is weighted more
+
+                        // The kernel window into the image is used to weight the pixel values closer to the center
                         double kernelValue = kernel[k + radius, l + radius];
                         r += c.R * kernelValue;
                         g += c.G * kernelValue;
                         b += c.B * kernelValue;
                     }
                 }
-                img.SetPixel(i, j, new Pixel((int)r, (int)g, (int)b));
-            }
-        }
 
-        return img;
+                // Set the computed pixel value in the result image
+                result.SetPixel(i, j, new Pixel((int)r, (int)g, (int)b));
+            }
+        });
+
+        return result;
     }
 
     public static int Clamp(int value, int min, int max)

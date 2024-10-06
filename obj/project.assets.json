@@ -50,6 +50,40 @@
           "buildTransitive/ComputeSharp.Core.targets": {}
         }
       },
+      "ComputeSharp.Dynamic/2.1.0": {
+        "type": "package",
+        "dependencies": {
+          "ComputeSharp": "2.1.0"
+        },
+        "compile": {
+          "lib/net6.0/ComputeSharp.Dynamic.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net6.0/ComputeSharp.Dynamic.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtimeTargets": {
+          "runtimes/win-arm64/native/dxcompiler.dll": {
+            "assetType": "native",
+            "rid": "win-arm64"
+          },
+          "runtimes/win-arm64/native/dxil.dll": {
+            "assetType": "native",
+            "rid": "win-arm64"
+          },
+          "runtimes/win-x64/native/dxcompiler.dll": {
+            "assetType": "native",
+            "rid": "win-x64"
+          },
+          "runtimes/win-x64/native/dxil.dll": {
+            "assetType": "native",
+            "rid": "win-x64"
+          }
+        }
+      },
       "protobuf-net/3.2.30": {
         "type": "package",
         "dependencies": {
@@ -160,6 +194,26 @@
         "lib/net8.0/ComputeSharp.Core.xml"
       ]
     },
+    "ComputeSharp.Dynamic/2.1.0": {
+      "sha512": "QeKJdT4UMMGfXr8DcQJJsTN3q0V15HlVGnXHURqlIbU16xkNhCENPwu5hPnG5hsjvuaNQxOTD2HH00YbiFP0YQ==",
+      "type": "package",
+      "path": "computesharp.dynamic/2.1.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "computesharp.dynamic.2.1.0.nupkg.sha512",
+        "computesharp.dynamic.nuspec",
+        "icon.png",
+        "lib/net6.0/ComputeSharp.Dynamic.dll",
+        "lib/net6.0/ComputeSharp.Dynamic.xml",
+        "lib/netstandard2.0/ComputeSharp.Dynamic.dll",
+        "lib/netstandard2.0/ComputeSharp.Dynamic.xml",
+        "runtimes/win-arm64/native/dxcompiler.dll",
+        "runtimes/win-arm64/native/dxil.dll",
+        "runtimes/win-x64/native/dxcompiler.dll",
+        "runtimes/win-x64/native/dxil.dll"
+      ]
+    },
     "protobuf-net/3.2.30": {
       "sha512": "C/UTlmxEJHAHpqm8xQK1UyJKaIynVCSNG4mVrbLgnZ7ccH28nN49O8iMJvKEodTgVbnimvy+3mIiAdW6mATwnw==",
       "type": "package",
@@ -233,6 +287,7 @@
     "net8.0": [
       "CommandLineParser >= 2.9.1",
       "ComputeSharp >= 3.0.1",
+      "ComputeSharp.Dynamic >= 2.1.0",
       "protobuf-net >= 3.2.30"
     ]
   },
@@ -288,6 +343,10 @@
           "ComputeSharp": {
             "target": "Package",
             "version": "[3.0.1, )"
+          },
+          "ComputeSharp.Dynamic": {
+            "target": "Package",
+            "version": "[2.1.0, )"
           },
           "protobuf-net": {
             "target": "Package",

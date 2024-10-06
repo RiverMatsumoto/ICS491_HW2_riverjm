@@ -17,6 +17,7 @@
   <ItemGroup>
     <PackageReference Include="CommandLineParser" Version="2.9.1" />
     <PackageReference Include="ComputeSharp" Version="3.0.1" />
+    <PackageReference Include="ComputeSharp.Dynamic" Version="2.1.0" />
     <PackageReference Include="protobuf-net" Version="3.2.30" />
   </ItemGroup>
 
