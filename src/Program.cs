@@ -111,13 +111,10 @@ class Program
         {
             tempImages[i] = tempImages[i].CreateThresholdCopy(
                 Lerp(0.25, 0.75, 1.0 - ((double)i / tempImages.Length)));
+            PpmParser.SaveImageToPpmFile(Path.Combine(outputDirectory, $"frame_{i.ToString().PadLeft(4, '0')}.ppm"), tempImages[i], "P3");
         }
         Console.WriteLine("Done creating threshold animation.");
         Console.WriteLine("Compiling video frames for threshold blur");
-        for (int i = 0; i < tempImages.Length; i++)
-        {
-            PpmParser.SaveImageToPpmFile(Path.Combine(outputDirectory, $"frame_{i.ToString().PadLeft(4, '0')}.ppm"), tempImages[i], "P3");
-        }
 
         // 2. Gaussian blur animation
         // cache gaussian kernel for animation
@@ -148,13 +145,10 @@ class Program
         {
             tempImages[i] = ApplyGaussianBlur(images[i], kernelCache[i]);
             Console.WriteLine($"Blurred image {i}");
+            PpmParser.SaveImageToPpmFile(Path.Combine(outputDirectory, $"frame_{(i + 120).ToString().PadLeft(4, '0')}.ppm"), tempImages[i], "P3");
         }
         Console.WriteLine("Done creating gaussian blur animation.");
         Console.WriteLine("Compiling video frames for gaussian blur");
-        for (int i = 0; i < tempImages.Length; i++)
-        {
-            PpmParser.SaveImageToPpmFile(Path.Combine(outputDirectory, $"frame_{(i + 120).ToString().PadLeft(4, '0')}.ppm"), tempImages[i], "P3");
-        }
 
 
         Console.WriteLine("Applying bloom effect...");
@@ -178,13 +172,11 @@ class Program
         for (int i = 0; i < images.Length; i++)
         {
             tempImages[i] = images[i].ScaledAdditiveBlend(tempImages[i], (double)i / (double)images.Length);
+            PpmParser.SaveImageToPpmFile(Path.Combine(outputDirectory, $"frame_{(i + 240).ToString().PadLeft(4, '0')}.ppm"), tempImages[i], "P3");
         }
         Console.WriteLine("Done applying bloom effect.");
         Console.WriteLine("Compiling video frames for bloom effect");
-        for (int i = 0; i < tempImages.Length; i++)
-        {
-            PpmParser.SaveImageToPpmFile(Path.Combine(outputDirectory, $"frame_{(i + 240).ToString().PadLeft(4, '0')}.ppm"), tempImages[i], "P3");
-        }
+        Console.WriteLine("Exiting...");
     }
 
     public static double Lerp(double a, double b, double t)
