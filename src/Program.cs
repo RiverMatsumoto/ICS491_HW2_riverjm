@@ -144,20 +144,20 @@ class Program
             img.ApplyThreshold(0.5);
         }
         
-        Parallel.For(0, totalFiles, i =>
-        {
-            if (tempImages[i] != null)
-            {
-                double[,] selectedKernel = kernelCache[i];
-                tempImages[i] = ApplyGaussianBlur(images[i], selectedKernel);
-                Console.WriteLine($"[Thread {Task.CurrentId}] Applied Gaussian blur to image {i + 1}/{totalFiles}");
-            }
-        });
-        // for (int i = 0; i < tempImages.Length; i++)
+        // Parallel.For(0, totalFiles, i =>
         // {
-        //     tempImages[i] = ApplyGaussianBlur(tempImages[i], kernelCache[i]);
-        //     Console.WriteLine($"Blurred image {i}");
-        // }
+        //     if (tempImages[i] != null)
+        //     {
+        //         double[,] selectedKernel = kernelCache[i];
+        //         tempImages[i] = ApplyGaussianBlur(images[i], selectedKernel);
+        //         Console.WriteLine($"[Thread {Task.CurrentId}] Applied Gaussian blur to image {i + 1}/{totalFiles}");
+        //     }
+        // });
+        for (int i = 0; i < tempImages.Length; i++)
+        {
+            tempImages[i] = ApplyGaussianBlur(images[i], kernelCache[i]);
+            Console.WriteLine($"Blurred image {i}");
+        }
         Console.WriteLine("Done creating gaussian blur animation.");
         Console.WriteLine("Compiling video frames for gaussian blur");
         for (int i = 0; i < tempImages.Length; i++)
@@ -178,14 +178,19 @@ class Program
             img.ApplyThreshold(0.5);
         }
         Console.WriteLine("Created threshold images.");
-        Parallel.For(0, totalFiles, i =>
+        // Parallel.For(0, totalFiles, i =>
+        // {
+        //     if (tempImages[i] != null)
+        //     {
+        //         tempImages[i] = ApplyGaussianBlur(tempImages[i], kernel);
+        //         Console.WriteLine($"[Thread {Task.CurrentId}] Applied Gaussian blur to image {i + 1}/{totalFiles}");
+        //     }
+        // });
+        for (int i = 0; i < tempImages.Length; i++)
         {
-            if (tempImages[i] != null)
-            {
-                tempImages[i] = ApplyGaussianBlur(tempImages[i], kernel);
-                Console.WriteLine($"[Thread {Task.CurrentId}] Applied Gaussian blur to image {i + 1}/{totalFiles}");
-            }
-        });
+            tempImages[i] = ApplyGaussianBlur(tempImages[i], kernel);
+            Console.WriteLine($"Blurred image {i}");
+        }
         Console.WriteLine("Applied gaussian blur to threshold images.");
         for (int i = 0; i < images.Length; i++)
         {
@@ -205,84 +210,42 @@ class Program
         return a + (b - a) * t;
     }
 
-    // public static Image ApplyGaussianBlur(Image img, double[,] kernel)
-    // {
-    //     int width = img.Width;
-    //     int height = img.Height;
-    //     int kernelSize = kernel.GetLength(0); // square kernel
-    //     int radius = kernelSize / 2;
-
-    //     new Image(width, height);
-
-    //     // move center of kernel along the image
-    //     for (int i = 0; i < height; i++)
-    //     {
-    //         for (int j = 0; j < width; j++)
-    //         {
-    //             // apply the kernel weights to the pixel values
-    //             double r = 0, g = 0, b = 0;
-    //             for (int k = -radius; k <= radius; k++)
-    //             {
-    //                 for (int l = -radius; l <= radius; l++)
-    //                 {
-    //                     int row = Clamp(i + k, 0, height - 1);
-    //                     int col = Clamp(j + l, 0, width - 1);
-    //                     Pixel c = img.GetPixel(row, col);
-    //                     // the kernel window into the image is used to weight the pixel values closer to the center
-    //                     // closer to the center is weighted more
-    //                     double kernelValue = kernel[k + radius, l + radius];
-    //                     r += c.R * kernelValue;
-    //                     g += c.G * kernelValue;
-    //                     b += c.B * kernelValue;
-    //                 }
-    //             }
-    //             img.SetPixel(i, j, new Pixel((int)r, (int)g, (int)b));
-    //         }
-    //     }
-
-    //     return img;
-    // }
-
     public static Image ApplyGaussianBlur(Image img, double[,] kernel)
     {
         int width = img.Width;
         int height = img.Height;
-        int kernelSize = kernel.GetLength(0);
+        int kernelSize = kernel.GetLength(0); // square kernel
+        int radius = kernelSize / 2;
 
-        // Flatten the kernel into a 1D array
-        double[] flatKernel = new double[kernelSize * kernelSize];
-        for (int y = 0; y < kernelSize; y++)
+        new Image(width, height);
+
+        // move center of kernel along the image
+        for (int i = 0; i < height; i++)
         {
-            for (int x = 0; x < kernelSize; x++)
+            for (int j = 0; j < width; j++)
             {
-                flatKernel[y * kernelSize + x] = kernel[y, x];
+                // apply the kernel weights to the pixel values
+                double r = 0, g = 0, b = 0;
+                for (int k = -radius; k <= radius; k++)
+                {
+                    for (int l = -radius; l <= radius; l++)
+                    {
+                        int row = Clamp(i + k, 0, height - 1);
+                        int col = Clamp(j + l, 0, width - 1);
+                        Pixel c = img.GetPixel(row, col);
+                        // the kernel window into the image is used to weight the pixel values closer to the center
+                        // closer to the center is weighted more
+                        double kernelValue = kernel[k + radius, l + radius];
+                        r += c.R * kernelValue;
+                        g += c.G * kernelValue;
+                        b += c.B * kernelValue;
+                    }
+                }
+                img.SetPixel(i, j, new Pixel((int)r, (int)g, (int)b));
             }
         }
 
-        // Create buffers and textures
-        using var gpu = GraphicsDevice.GetDefault();
-        using ReadOnlyBuffer<double> gpuKernel = gpu.AllocateReadOnlyBuffer(flatKernel);
-        using ReadOnlyTexture2D<float4> inputTexture = gpu.AllocateReadOnlyTexture2D<float4>(img.Width, img.Height);
-        using ReadWriteTexture2D<float4> outputTexture = gpu.AllocateReadWriteTexture2D<float4>(img.Width, img.Height);
-
-        // Transfer image data to GPU
-        // Assuming Image has a method to get pixel data as float4 array
-        float4[] inputPixels = img.GetPixelsAsFloat4(); // Implement this method
-        gpuKernel.CopyFrom(flatKernel);
-        inputTexture.CopyFrom(inputPixels);
-
-        // Create and execute the shader
-        GaussianBlurShader shader = new GaussianBlurShader(inputTexture, outputTexture, gpuKernel, kernelSize);
-        shader.Execute();
-
-        // Retrieve the blurred image data from GPU
-        float4[] outputPixels = new float4[img.Width * img.Height]; 
-        outputTexture.CopyTo(outputPixels);
-
-        // Create a new Image from the blurred pixel data
-        Image blurredImage = Image.FromFloat4(outputPixels, width, height); // Implement this method
-
-        return blurredImage;
+        return img;
     }
 
     public static int Clamp(int value, int min, int max)
