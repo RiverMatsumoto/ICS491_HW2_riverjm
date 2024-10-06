@@ -6,3 +6,16 @@ images/video/video_final/*.ppm
 images/video/video_original/*.ppm
 images/video/video_temp/*.ppm
 images/video/temp/*.ppm
+bin/Debug/net8.0/ICS491_HW2_riverjm.deps.json
+bin/Debug/net8.0/ICS491_HW2_riverjm.dll
+bin/Debug/net8.0/ICS491_HW2_riverjm.exe
+bin/Debug/net8.0/ICS491_HW2_riverjm.pdb
+obj/Debug/net8.0/apphost.exe
+obj/Debug/net8.0/ICS491_HW2_riverjm.AssemblyInfo.cs
+obj/Debug/net8.0/ICS491_HW2_riverjm.AssemblyInfoInputs.cache
+obj/Debug/net8.0/ICS491_HW2_riverjm.csproj.CoreCompileInputs.cache
+obj/Debug/net8.0/ICS491_HW2_riverjm.csproj.FileListAbsolute.txt
+obj/Debug/net8.0/ICS491_HW2_riverjm.dll
+obj/Debug/net8.0/ICS491_HW2_riverjm.pdb
+obj/Debug/net8.0/ref/ICS491_HW2_riverjm.dll
+obj/Debug/net8.0/refint/ICS491_HW2_riverjm.dll

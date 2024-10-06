@@ -10,6 +10,7 @@
         "dependencies": {
           "CommandLineParser": "2.9.1",
           "ComputeSharp": "3.0.1",
+          "ComputeSharp.Dynamic": "2.1.0",
           "protobuf-net": "3.2.30"
         },
         "runtime": {
@@ -40,6 +41,39 @@
           "lib/net8.0/ComputeSharp.Core.dll": {
             "assemblyVersion": "3.0.1.0",
             "fileVersion": "3.0.1.0"
+          }
+        }
+      },
+      "ComputeSharp.Dynamic/2.1.0": {
+        "dependencies": {
+          "ComputeSharp": "3.0.1"
+        },
+        "runtime": {
+          "lib/net6.0/ComputeSharp.Dynamic.dll": {
+            "assemblyVersion": "2.1.0.0",
+            "fileVersion": "2.1.0.0"
+          }
+        },
+        "runtimeTargets": {
+          "runtimes/win-arm64/native/dxcompiler.dll": {
+            "rid": "win-arm64",
+            "assetType": "native",
+            "fileVersion": "1.7.2207.3"
+          },
+          "runtimes/win-arm64/native/dxil.dll": {
+            "rid": "win-arm64",
+            "assetType": "native",
+            "fileVersion": "101.7.2207.10"
+          },
+          "runtimes/win-x64/native/dxcompiler.dll": {
+            "rid": "win-x64",
+            "assetType": "native",
+            "fileVersion": "1.7.2207.3"
+          },
+          "runtimes/win-x64/native/dxil.dll": {
+            "rid": "win-x64",
+            "assetType": "native",
+            "fileVersion": "101.7.2207.10"
           }
         }
       },
@@ -94,6 +128,13 @@
       "sha512": "sha512-sXFBL6fbrV+E9NRIvaCDXO8fxeXrnMWLnPoECu7VjcIKduL3AbQnhKo0rEboQmpbkbFljlqP3xOzsdBkbaBpLA==",
       "path": "computesharp.core/3.0.1",
       "hashPath": "computesharp.core.3.0.1.nupkg.sha512"
+    },
+    "ComputeSharp.Dynamic/2.1.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-QeKJdT4UMMGfXr8DcQJJsTN3q0V15HlVGnXHURqlIbU16xkNhCENPwu5hPnG5hsjvuaNQxOTD2HH00YbiFP0YQ==",
+      "path": "computesharp.dynamic/2.1.0",
+      "hashPath": "computesharp.dynamic.2.1.0.nupkg.sha512"
     },
     "protobuf-net/3.2.30": {
       "type": "package",
