@@ -48,31 +48,27 @@ namespace ICS491_HW2_riverjm
             maximumColorValue_ = int.Parse(stripExtraWhiteSpaces(lines[2]));
 
             // we are done with the header, discard that, we only have pixel values left. File better be formatted correctly
-            lines.RemoveRange(0, 2);
+            lines.RemoveRange(0, 3);
+            string pixelData = string.Join('\n', lines).Replace('\n',  ' ');
+            string[] pixelDataArr = pixelData.Split(' ', StringSplitOptions.RemoveEmptyEntries);
 
-            Console.WriteLine($"Width: {width_}, Height: {height_}");
-            Pixel[][] pixels = new Pixel[height_][];
-            for (int i = 0; i < height_; i++)
-                pixels[i] = new Pixel[width_];
-            // parse backwards since removing at end of list is O(1)
-            for (int i = height_ - 1; i >= 0; i--)
+            Image image = new Image(width_, height_);
+
+            for (int i = 0; i < pixelDataArr.Length; i += 3)
             {
-                for (int j = width_ - 1; j >= 0; j--)
-                {
-                    int[] rgb = stripExtraWhiteSpaces(lines.Last())
-                        .Split(' ')
-                        .Select(int.Parse)
-                        .ToArray();
-                    int r = stretchRgb(rgb[0], maximumColorValue_);
-                    int g = stretchRgb(rgb[1], maximumColorValue_);
-                    int b = stretchRgb(rgb[2], maximumColorValue_);
-                    // Console.WriteLine($"{r} {g} {b}");
-                    pixels[i][j] = new Pixel(r, g, b);
-                    lines.RemoveAt(lines.Count - 1);
-                }
+                int r = int.Parse(pixelDataArr[i]);
+                int g = int.Parse(pixelDataArr[i + 1]);
+                int b = int.Parse(pixelDataArr[i + 2]);
+                int currentRow = (i / 3) / width_;
+                int currentCol = (i / 3) % width_;
+                image.SetPixel(currentRow, currentCol, new Pixel(r, g, b));
             }
-            Image image = new(pixels);
             return image;
+        }
+
+        string CompressPixelData(string[] pixelData)
+        {
+            return "";
         }
         
         public Image ParseImage()
@@ -82,7 +78,7 @@ namespace ICS491_HW2_riverjm
 
         public static void SaveImageToPpmFile(string path, Image img, string ppmType = "P3")
         {
-            StringBuilder sb = new StringBuilder();
+            StringBuilder sb = new();
             sb.AppendLine(ppmType);
             sb.AppendLine($"{img.Width} {img.Height}");
             sb.AppendLine($"{255}");
@@ -91,10 +87,11 @@ namespace ICS491_HW2_riverjm
                 for (int j = 0; j < img.Width; j++)
                 {
                     Pixel p = img.GetPixel(i, j);
-                    sb.Append($"{p.R} {p.G} {p.B}");
-                    sb.AppendLine();
+                    sb.Append($"{p.R} {p.G} {p.B} ");
                 }
+                sb.AppendLine();
             }
+            Console.WriteLine($"Writing image to file: {path}");
             File.WriteAllText(path, sb.ToString());
         }
 

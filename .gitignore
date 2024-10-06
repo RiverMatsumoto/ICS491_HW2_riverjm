@@ -1,2 +1,8 @@
 bin
 obj
+
+images/video/*.ppm
+images/video/video_final/*.ppm
+images/video/video_original/*.ppm
+images/video/video_temp/*.ppm
+images/video/temp/*.ppm

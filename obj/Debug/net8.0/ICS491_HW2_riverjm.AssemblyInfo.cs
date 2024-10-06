@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("ICS491_HW2_riverjm")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+124f87f43721a728007aa29817f6b44780373d14")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+d6ca1d9346b7dabf95c4d5e1c71542eda2eff46b")]
 [assembly: System.Reflection.AssemblyProductAttribute("ICS491_HW2_riverjm")]
 [assembly: System.Reflection.AssemblyTitleAttribute("ICS491_HW2_riverjm")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

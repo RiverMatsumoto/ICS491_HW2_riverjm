@@ -1,8 +1,15 @@
 {
   "version": 2,
-  "dgSpecHash": "ip8MneC8fgo=",
+  "dgSpecHash": "aGgLlWJOu28=",
   "success": true,
   "projectFilePath": "C:\\Users\\river\\Documents\\School\\7_Fall2024\\ICS491\\ICS491_HW2_riverjm\\ICS491_HW2_riverjm.csproj",
-  "expectedPackageFiles": [],
+  "expectedPackageFiles": [
+    "C:\\Users\\river\\.nuget\\packages\\commandlineparser\\2.9.1\\commandlineparser.2.9.1.nupkg.sha512",
+    "C:\\Users\\river\\.nuget\\packages\\computesharp\\3.0.1\\computesharp.3.0.1.nupkg.sha512",
+    "C:\\Users\\river\\.nuget\\packages\\computesharp.core\\3.0.1\\computesharp.core.3.0.1.nupkg.sha512",
+    "C:\\Users\\river\\.nuget\\packages\\protobuf-net\\3.2.30\\protobuf-net.3.2.30.nupkg.sha512",
+    "C:\\Users\\river\\.nuget\\packages\\protobuf-net.core\\3.2.30\\protobuf-net.core.3.2.30.nupkg.sha512",
+    "C:\\Users\\river\\.nuget\\packages\\system.collections.immutable\\7.0.0\\system.collections.immutable.7.0.0.nupkg.sha512"
+  ],
   "logs": []
 }

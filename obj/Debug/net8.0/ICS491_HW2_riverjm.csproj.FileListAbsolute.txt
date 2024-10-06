@@ -27,3 +27,10 @@ C:\Users\river\Documents\School\7_Fall2024\ICS491\ICS491_HW2_riverjm\obj\Debug\n
 C:\Users\river\Documents\School\7_Fall2024\ICS491\ICS491_HW2_riverjm\obj\Debug\net8.0\ICS491_HW2_riverjm.pdb
 C:\Users\river\Documents\School\7_Fall2024\ICS491\ICS491_HW2_riverjm\obj\Debug\net8.0\ICS491_HW2_riverjm.genruntimeconfig.cache
 C:\Users\river\Documents\School\7_Fall2024\ICS491\ICS491_HW2_riverjm\obj\Debug\net8.0\ref\ICS491_HW2_riverjm.dll
+C:\Users\river\Documents\School\7_Fall2024\ICS491\ICS491_HW2_riverjm\bin\Debug\net8.0\CommandLine.dll
+C:\Users\river\Documents\School\7_Fall2024\ICS491\ICS491_HW2_riverjm\obj\Debug\net8.0\ICS491_HW2_riverjm.csproj.AssemblyReference.cache
+C:\Users\river\Documents\School\7_Fall2024\ICS491\ICS491_HW2_riverjm\obj\Debug\net8.0\ICS491_H.F8D48D74.Up2Date
+C:\Users\river\Documents\School\7_Fall2024\ICS491\ICS491_HW2_riverjm\bin\Debug\net8.0\protobuf-net.dll
+C:\Users\river\Documents\School\7_Fall2024\ICS491\ICS491_HW2_riverjm\bin\Debug\net8.0\protobuf-net.Core.dll
+C:\Users\river\Documents\School\7_Fall2024\ICS491\ICS491_HW2_riverjm\bin\Debug\net8.0\ComputeSharp.dll
+C:\Users\river\Documents\School\7_Fall2024\ICS491\ICS491_HW2_riverjm\bin\Debug\net8.0\ComputeSharp.Core.dll

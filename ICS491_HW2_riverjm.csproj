@@ -7,4 +7,17 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Folder Include="images\video\video_bloom\" />
+    <Folder Include="images\video\video_blur\" />
+    <Folder Include="images\video\video_final\" />
+    <Folder Include="images\video\video_threshold\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="CommandLineParser" Version="2.9.1" />
+    <PackageReference Include="ComputeSharp" Version="3.0.1" />
+    <PackageReference Include="protobuf-net" Version="3.2.30" />
+  </ItemGroup>
+
 </Project>
