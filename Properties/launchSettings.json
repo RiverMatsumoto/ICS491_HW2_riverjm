@@ -1,0 +1,9 @@
+{
+  "profiles": {
+    "ICS491_HW2_riverjm": {
+      "commandName": "Project",
+      "commandLineArgs": "-d ./images/video/video_original -o ./images/video/video_final",
+      "workingDirectory": "C:\\Users\\river\\Documents\\School\\7_Fall2024\\ICS491\\ICS491_HW2_riverjm"
+    }
+  }
+}
